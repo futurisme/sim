@@ -31,7 +31,7 @@ export function renderModals(container, store) {
   const managedSubId = ui.managedSubServerId;
 
   if (!member && !isOwnerProfile && !modalType && !isSettingsOpen && !managedSubId) {
-    container.innerHTML = '';
+    container.replaceChildren();
     return;
   }
 

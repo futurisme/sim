@@ -14,3 +14,4 @@ export * from './rules/tickWorldHelpers.js';
 export * from './rules/meritocracy.js';
 export * from './rules/purnaTugas.js';
 export * from './rules/simulationLoop.js';
+export * from './ai/aiCommandDispatch.js';

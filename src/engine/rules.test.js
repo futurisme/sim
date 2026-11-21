@@ -83,6 +83,7 @@ import {
   setMemberSubRole,
   setRankPermission,
   setSubServerInternalAccess,
+  issueSeniorCommand,
   shouldNewApplicantJoin,
   stepSimulation,
   submitAkpolRegistration,
@@ -284,12 +285,16 @@ test('channel message ring buffer caps at 65 entries by shifting oldest head mes
   assert.ok(state.messages['obrolan-ooc'][64].text.includes('ke-79'));
 });
 
-test('expanded 2D map includes Akademi Kepolisian district and eastern logistics sector', () => {
-  assert.equal(WORLD_WIDTH, 1320);
-  assert.equal(WORLD_HEIGHT, 900);
+test('expanded 2D map includes Akademi Kepolisian district, SPN, Universitas Izumiya and eastern logistics sector', () => {
+  assert.equal(WORLD_WIDTH, 1560);
+  assert.equal(WORLD_HEIGHT, 1020);
   const akpol = DISTRICTS.find((d) => d.id === 'akademi');
   assert.ok(akpol, 'Akademi Kepolisian district must exist');
   assert.equal(akpol.isAcademy, true);
+  const spn = DISTRICTS.find((d) => d.id === 'spn');
+  assert.ok(spn, 'SPN district must exist');
+  const univ = DISTRICTS.find((d) => d.id === 'universitas');
+  assert.ok(univ, 'Universitas Izumiya district must exist');
 });
 
 test('Akademi Kepolisian enforces sub-server #registrasi gate, quota, synchronized cohort drill, graduation, and failure', () => {
@@ -1389,6 +1394,22 @@ test('Delegated Sub-Server internal management allows non-owner KADIV/KANIT/dele
   );
   assert.equal(takeRes.ok, true);
   assert.equal(sub.ownerId, viceMgr.id);
+});
+
+test('senior-to-junior AI persona command dispatch assigns patrol tasks and logs chat directives', () => {
+  const state = createInitialState();
+  const senior = state.members[0];
+  const junior = state.members[1];
+  senior.rankId = state.ranks[state.ranks.length - 1].id;
+  junior.rankId = state.ranks[0].id;
+
+  const res = issueSeniorCommand(state, senior.id, junior.id, 'PATROLI_SEKTOR', { districtId: 'mabes' });
+  assert.equal(res.success, true);
+  assert.equal(junior.currentTask, 'PATROLI_SEKTOR');
+  assert.equal(junior.targetDistrictId, 'mabes');
+  assert.equal(junior.directiveStatus, 'ACTIVE');
+  assert.ok(junior.directiveLog.length > 0);
+  assert.ok(state.messages['obrolan-umum'].some((m) => m.text.includes('PERINTAH TAKTIS')));
 });
 
 

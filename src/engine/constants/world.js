@@ -1,5 +1,5 @@
-export const WORLD_WIDTH = 1320;
-export const WORLD_HEIGHT = 900;
+export const WORLD_WIDTH = 1560;
+export const WORLD_HEIGHT = 1020;
 export const MAX_AI_MEMBERS = 100;
 
 export const STORAGE_KEY = 'izumiya_rp_sim_v2';
@@ -60,34 +60,36 @@ export const INCIDENT_TYPES = [
 ];
 
 export const MABES_ZONES = {
-  compound: { x: 44, y: 44, w: 312, h: 278 },
-  hq: { x: 56, y: 74, w: 158, h: 112 },
-  courtyard: { x: 56, y: 198, w: 150, h: 102 },
-  propamOffice: { x: 226, y: 74, w: 116, h: 98 },
+  compound: { x: 44, y: 44, w: 320, h: 290 },
+  hq: { x: 58, y: 74, w: 162, h: 116 },
+  courtyard: { x: 58, y: 202, w: 154, h: 118 },
+  propamOffice: { x: 232, y: 74, w: 118, h: 102 },
   prison: {
-    x: 226,
-    y: 184,
-    w: 116,
-    h: 116,
+    x: 232,
+    y: 188,
+    w: 118,
+    h: 122,
     cells: [
-      { x: 245, y: 242 },
-      { x: 282, y: 242 },
-      { x: 318, y: 242 },
+      { x: 252, y: 250 },
+      { x: 291, y: 250 },
+      { x: 330, y: 250 },
     ],
   },
-  eastGate: { x: 356, y: 155 },
-  southGate: { x: 170, y: 322 },
+  eastGate: { x: 364, y: 165 },
+  southGate: { x: 175, y: 334 },
 };
 
 export const DISTRICTS = [
-  { id: 'mabes', name: 'Kompleks Mabes Polri & Propam', x: 44, y: 44, w: 312, h: 278, color: '#1A2433' },
-  { id: 'simpang', name: 'Simpang Utama', x: 380, y: 270, w: 200, h: 170, color: '#1F2430' },
-  { id: 'pasar', name: 'Distrik Niaga & Pasar', x: 670, y: 80, w: 230, h: 185, color: '#23272F' },
-  { id: 'akademi', name: 'Akademi Kepolisian', x: 965, y: 65, w: 295, h: 255, color: '#17263D', isAcademy: true },
-  { id: 'dermaga', name: 'Taman & Dermaga Selatan', x: 650, y: 645, w: 275, h: 195, color: '#1C2833' },
-  { id: 'permukiman', name: 'Permukiman Timur', x: 95, y: 465, w: 230, h: 185, color: '#20242C' },
-  { id: 'pelabuhan', name: 'Kawasan Logistik Timur', x: 965, y: 465, w: 295, h: 215, color: '#1F242D' },
+  { id: 'mabes', name: 'Kompleks Mabes Polri & Propam', x: 44, y: 44, w: 320, h: 290, color: '#1A2433' },
+  { id: 'spn', name: 'Sekolah Kepolisian Negara (SPN)', x: 400, y: 44, w: 310, h: 270, color: '#1B2A32', isSpn: true },
+  { id: 'universitas', name: 'Universitas Izumiya', x: 755, y: 44, w: 340, h: 270, color: '#2C1E3D', isUniversity: true },
+  { id: 'akademi', name: 'Akademi Kepolisian (Akpol)', x: 1130, y: 44, w: 385, h: 270, color: '#17263D', isAcademy: true },
+  { id: 'permukiman', name: 'Permukiman Sektor Barat', x: 44, y: 365, w: 320, h: 320, color: '#20242C' },
+  { id: 'simpang', name: 'Simpang Raya Kota Izumiya', x: 400, y: 345, w: 310, h: 185, color: '#1F2430' },
+  { id: 'pasar', name: 'Distrik Niaga & Pasar', x: 755, y: 345, w: 340, h: 185, color: '#23272F' },
+  { id: 'dermaga', name: 'Taman & Dermaga Selatan', x: 400, y: 560, w: 695, h: 230, color: '#1C2833' },
+  { id: 'pelabuhan', name: 'Kawasan Logistik & Pelabuhan', x: 1130, y: 345, w: 385, h: 445, color: '#1F242D' },
 ];
 
-export const ROAD_X = [170, 480, 790, 1110];
-export const ROAD_Y = [155, 355, 555, 765];
+export const ROAD_X = [190, 560, 930, 1310];
+export const ROAD_Y = [170, 390, 610, 840];

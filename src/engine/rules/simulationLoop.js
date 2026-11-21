@@ -15,6 +15,7 @@ import {
   getCircadianProfile,
   runAutonomousRoleTick,
 } from '../aiBrain.js';
+import { processAutonomousSeniorCommands } from '../ai/aiCommandDispatch.js';
 import {
   clamp,
   createAiMember,
@@ -538,6 +539,7 @@ export function stepSimulation(state, rawDt, input = { moveX: 0, moveY: 0 }, rng
     for (const act of autoActions) {
       events.push({ type: 'AUTONOMY_ACTION', detail: act });
     }
+    processAutonomousSeniorCommands(state);
   }
 
   state.cooldowns.incidentTick -= dt;
