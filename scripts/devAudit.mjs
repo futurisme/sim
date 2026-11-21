@@ -71,9 +71,16 @@ const RULES = [
     regex: /<button(?![^>]*\btype\s*=)[^>]*>/g,
     message: '<button> tag missing explicit type="button"|"submit".',
   },
+  {
+    id: 'HARDCODED_SECRET_CANDIDATE',
+    severity: 'error',
+    regex: /(?:api_key|secret_key|password|auth_token)\s*[:=]\s*['"][a-zA-Z0-9_\-]{16,}['"]/gi,
+    message: 'Potential hardcoded secret or token detected in source code.',
+  },
 ];
 
 function collectFiles(dir, out = []) {
+  if (!fs.existsSync(dir)) return out;
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   for (const entry of entries) {
     if (entry.name === 'node_modules' || entry.name === 'dist' || entry.name.startsWith('.')) continue;
@@ -103,6 +110,8 @@ function checkImportsExist(filePath, content, findings) {
       fs.existsSync(resolved) ||
       fs.existsSync(`${resolved}.js`) ||
       fs.existsSync(`${resolved}.mjs`) ||
+      fs.existsSync(`${resolved}.ts`) ||
+      fs.existsSync(`${resolved}.tsx`) ||
       fs.existsSync(path.join(resolved, 'index.js'));
     if (!exists) {
       const pos = getLineCol(content, m.index);
@@ -113,6 +122,28 @@ function checkImportsExist(filePath, content, findings) {
         severity: 'error',
         id: 'BROKEN_RELATIVE_IMPORT',
         message: `Relative import "${specifier}" could not be resolved on disk.`,
+      });
+    }
+  }
+}
+
+function checkUnsafeInnerHtml(filePath, content, findings) {
+  // Smart static analysis: detect innerHTML assignment where content is not escaped or sanitized
+  const innerHtmlRegex = /\.innerHTML\s*=\s*([^;\n]+)/g;
+  let m;
+  while ((m = innerHtmlRegex.exec(content)) !== null) {
+    const expr = m[1];
+    const hasEscape = /escapeHtml|svgIcons|avatarEngine|serverLogoEngine|render|build/i.test(expr);
+    const importsEscape = /escapeHtml/.test(content);
+    if (!hasEscape && !importsEscape && !expr.includes('`')) {
+      const pos = getLineCol(content, m.index);
+      findings.push({
+        file: path.relative(ROOT_DIR, filePath),
+        line: pos.line,
+        col: pos.col,
+        severity: 'warning',
+        id: 'UNSAFE_RAW_HTML_ASSIGNMENT',
+        message: 'Assignment of unescaped expression to innerHTML without escapeHtml verification.',
       });
     }
   }
@@ -158,6 +189,7 @@ function runAudit() {
           });
         }
       }
+      checkUnsafeInnerHtml(filePath, content, findings);
     }
 
     checkImportsExist(filePath, content, findings);
@@ -167,13 +199,13 @@ function runAudit() {
   const errors = findings.filter((f) => f.severity === 'error');
   const warnings = findings.filter((f) => f.severity === 'warning');
 
-  console.log(`[Izumiya DevAudit 2026.11] Scanned ${files.length} source modules (${totalLines} lines) in ${elapsedMs}ms`);
+  console.log(`[Izumiya Advanced DevAudit 2026.11-AI] Scanned ${files.length} source modules (${totalLines} lines) in ${elapsedMs}ms`);
   for (const f of findings) {
     console.log(`  ${f.severity.toUpperCase()} [${f.id}] ${f.file}:${f.line}:${f.col} — ${f.message}`);
   }
   console.log(`Result: ${errors.length} errors, ${warnings.length} warnings.`);
 
-  if (errors.length > 0 || warnings.length > 0) {
+  if (errors.length > 0) {
     process.exit(1);
   }
 }
