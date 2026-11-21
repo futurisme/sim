@@ -1,0 +1,23 @@
+- generic [ref=e5]:
+  - generic [ref=e6]:
+    - generic [ref=e7]: REPUBLIK IZUMIYA
+    - generic [ref=e8]: 4 ANGGOTA TERDAFTAR
+  - generic [ref=e9]:
+    - heading "Kepolisian Republik Izumiya" [level=1] [ref=e23]
+    - paragraph [ref=e24]: Bangun komunitas roleplay layaknya Discord, susun pangkat & divisi agar AI-person betah, lalu patroli di kota 2D.
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]: "7"
+        - generic [ref=e28]: Pangkat
+      - generic [ref=e29]:
+        - generic [ref=e30]: "3"
+        - generic [ref=e31]: Divisi
+      - generic [ref=e32]:
+        - generic [ref=e33]: 66%
+        - generic [ref=e34]: Daya Tarik
+  - generic [ref=e35]:
+    - button "Masuk ke Server & Markas" [ref=e36] [cursor=pointer]
+    - generic [ref=e37]:
+      - button "Pengaturan" [ref=e38] [cursor=pointer]
+      - button "Reset Data Awal" [ref=e43] [cursor=pointer]
+    - paragraph [ref=e44]: Mode Ponsel · Custom Engine & AI · Tekan Enter untuk mulai

@@ -1,0 +1,58 @@
+- generic [ref=e3]:
+  - main [ref=e45]:
+    - generic [ref=e46]:
+      - generic [ref=e47]:
+        - generic [ref=e48]:
+          - button "Buka daftar channel" [ref=e49] [cursor=pointer]
+          - generic [ref=e53]: obrolan-ooc
+        - generic [ref=e58]:
+          - group "Kecepatan simulasi" [ref=e59]:
+            - button "Pause simulasi" [ref=e60] [cursor=pointer]: II
+            - button "Kecepatan 1X" [ref=e61] [cursor=pointer]: 1X
+            - button "Kecepatan 2X" [ref=e62] [cursor=pointer]: 2X
+          - button "Buka daftar anggota" [ref=e63] [cursor=pointer]
+      - generic [ref=e69]:
+        - generic [ref=e70]: Obrolan santai OOC anggota RP Kepolisian Republik Izumiya.
+        - generic [ref=e71]: 08:06 · Pagi
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - button "Buka profil Raka Wibowo" [ref=e75] [cursor=pointer]
+          - generic [ref=e103]:
+            - generic [ref=e104]:
+              - button "Raka Wibowo" [ref=e105] [cursor=pointer]
+              - generic [ref=e106]: Bripda · Sabhara · 08:03
+            - paragraph [ref=e107]: Pagi semua! Ketuk foto profil siapa saja di sini buat lihat bio, role berwarna, brevet, dan medali.
+            - generic [ref=e108]:
+              - button "🔥 2" [ref=e109] [cursor=pointer]
+              - button "Beri reaksi salut" [ref=e110] [cursor=pointer]: + 🫡
+        - generic [ref=e111]:
+          - button "Buka profil Nadia Kartika" [ref=e112] [cursor=pointer]
+          - generic [ref=e144]:
+            - generic [ref=e145]:
+              - button "Nadia Kartika" [ref=e146] [cursor=pointer]
+              - generic [ref=e147]: Helper
+              - generic [ref=e148]: Bripda · Satlantas · Helper · 08:04
+            - paragraph [ref=e149]: Kalau ada yang dilantik jadi Developer & WAKAPOLRI dengan wewenang penuh, map 2D makin optimal dan rekrutmen jalan otomatis!
+            - button "Beri reaksi salut" [ref=e151] [cursor=pointer]: + 🫡
+      - generic [ref=e152]:
+        - generic [ref=e153]:
+          - button "Apel Mabes" [ref=e154] [cursor=pointer]
+          - button "Razia Pasar" [ref=e155] [cursor=pointer]
+          - button "Cek Kota" [ref=e156] [cursor=pointer]
+          - button "Link Sub-Server" [ref=e157] [cursor=pointer]
+          - button "+ Divisi" [ref=e158] [cursor=pointer]
+          - button "Event RP" [ref=e159] [cursor=pointer]
+          - button "Sambut" [ref=e160] [cursor=pointer]
+        - generic [ref=e161]:
+          - textbox "Ketik pesan, perintah, atau mention anggota..." [ref=e162]
+          - button "Kirim pesan" [ref=e163] [cursor=pointer]
+      - complementary "Navigasi Server & Channel" [ref=e167]
+      - complementary "Daftar Anggota AI" [ref=e168]
+  - navigation "Navigasi Utama" [ref=e169]:
+    - button "Pengaturan Game & Discord" [ref=e170] [cursor=pointer]:
+      - generic [ref=e174]: Setelan
+    - button "Discord" [ref=e175] [cursor=pointer]
+    - button "Struktur" [ref=e180] [cursor=pointer]
+    - button "5 Kota 2D" [ref=e185] [cursor=pointer]:
+      - generic [ref=e186]: "5"
+      - generic [ref=e190]: Kota 2D
